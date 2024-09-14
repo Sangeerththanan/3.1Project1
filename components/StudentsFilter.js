@@ -15,15 +15,17 @@ const StudentsFilter = ({ navigation, route }) => {
       StackActions.replace('List')
     );
   };
+
+  // Set default student as the first in the list
   const [student, setStudent] = useState(students[0]);
-  const { newStudent } = route.params;
-  
-  // useEffect to update the student details when route.params changes
+
+  // Safely check if route and route.params exist, then extract newStudent
+  const newStudent = route?.params?.newStudent;
+
   useEffect(() => {
     if (newStudent) {
-      console.log(newStudent)
+      console.log(newStudent);
       setStudent(newStudent);
-      // Update other state variables if needed
     }
   }, [newStudent]);
 
@@ -46,7 +48,6 @@ const StudentsFilter = ({ navigation, route }) => {
         <Text style={styles.infoText}>Skills: {student.skills}</Text>
       </View>
 
-
       <View style={styles.buttonRow}>
         <TouchableOpacity style={styles.buttonContainer}>
           <Text
@@ -68,19 +69,18 @@ const StudentsFilter = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'flex-end', // Align students to the bottom
     padding: 16,
   },
   buttonRow: {
-    flexDirection: 'row', // Arrange children in a row
-    justifyContent: 'space-between', // Space evenly between children
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   buttonContainer: {
     backgroundColor: '#3498db',
     padding: 10,
     borderRadius: 5,
     margin: 5,
-    flex: 1, // Equal flex for both buttons
+    flex: 1,
   },
   buttonText: {
     textAlign: 'center',
@@ -88,31 +88,31 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   rightButton: {
-    marginLeft: 5, // Adjust margin to create space between buttons
+    marginLeft: 5,
   },
   headerText: {
-    fontSize: 24, // You can adjust the font size as needed
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
     marginVertical: 10,
   },
   profile: {
-    width: 150, // Adjust the width as needed
-    height: 150, // Adjust the height as needed
-    borderRadius: 75, // To make it a circular profile picture
-    alignSelf: 'center', // Center the image horizontally
-    marginTop: 20, // Add margin from the top
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    alignSelf: 'center',
+    marginTop: 20,
   },
   studentInfo: {
     padding: 10,
     marginBottom: 20,
-    backgroundColor: '#ecf0f1', // Light background color
+    backgroundColor: '#ecf0f1',
     borderRadius: 8,
   },
   infoText: {
     fontSize: 16,
     marginBottom: 5,
-    color: '#2c3e50', // Text color
+    color: '#2c3e50',
   },
 });
 
