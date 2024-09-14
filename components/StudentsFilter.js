@@ -33,7 +33,8 @@ const StudentsFilter = ({ navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.headerText}>Students Information Portal</Text>
       <Image
-        source={require(`../assets/profilepic/1.jpg`)}
+        // source={require(`../assets/profilepic/1.jpg`)}
+        source={student.profilePic}
         alt="Profile"
         style={styles.profile}
       />
